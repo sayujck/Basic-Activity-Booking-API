@@ -1,3 +1,4 @@
+import Activity from "../models/activityModel.js";
 import Booking from "../models/bookingModel.js";
 
 export const createBooking = async (req, res) => {
@@ -7,17 +8,23 @@ export const createBooking = async (req, res) => {
         if (existingBooking) {
             return res.status(401).json({ message: "Already booked" });
         }
-        const newBooking = new Booking({
-            userId,
-            activityId
-        });
-        await newBooking.save();
-        res.status(201).json({ 
-            booking: newBooking,
-            message: "Booking created successfully"
-         });
+        const activity = await Activity.findById(activityId);
+        if (!activity) {
+            return res.status(404).json({ message: "Activity not found" });
+        }
+        else {
+            const newBooking = new Booking({
+                userId,
+                activityId
+            });
+            await newBooking.save();
+            res.status(201).json({
+                booking: newBooking,
+                message: "Booking created successfully"
+            });
+        }
     } catch (error) {
-        res.status(500).json({ message: "Error creating booking"});
+        res.status(500).json({ message: "Error creating booking" });
     }
 }
 
@@ -27,6 +34,6 @@ export const getBookingByUser = async (req, res) => {
         const bookings = await Booking.find({ userId }).populate('activityId');
         res.status(200).json({ bookings });
     } catch (error) {
-        res.status(500).json({ message: "Error fetching bookings"});
+        res.status(500).json({ message: "Error fetching bookings" });
     }
 }
