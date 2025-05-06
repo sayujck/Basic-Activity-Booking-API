@@ -4,7 +4,7 @@ A simple REST API backend for booking activities like cricket, movies, and footb
 
  🔗 Live API: https://basic-activity-booking-app-rap1.onrender.com
 
-** 🧪 Postman Collection**
+🧪 **Postman Collection**
  
  🔗 https://.postman.co/workspace/My-Workspace~3811fa27-5d25-4b6c-872c-2908264f1887/collection/40085585-0c1cad6d-9e7a-48a9-85ea-f182b6db88f7?action=share&creator=40085585 
  
