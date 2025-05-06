@@ -18,8 +18,8 @@ A simple REST API backend for booking activities like cricket, movies, and footb
 
 4. create .env file
    
+   CONNECTION_STRING="your_connection_str"
    PORT=3000
-   MONGODB_URI=your_mongo_uri
-   JWT_SECRET=your_jwt_secret
+   JWT_SECRET="your_key"
    
 5. npm start
